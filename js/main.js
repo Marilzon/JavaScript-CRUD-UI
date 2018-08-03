@@ -21,11 +21,22 @@ function readUser() {
     for (i = 0; i < users.length; i++) {
         userList.innerHTML +=
             `<li class="user">
-            <p>Nome: ${users[i].name}</p>
-            <p>E-mail: ${users[i].email}</p>
-        </li>
-        <button class="editUser" onClick="editUser('${i}')">Editar</button>
-        <button class="removeUser" onClick="removeUser('${i}')">Apagar</button>`
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <p>Nome: ${users[i].name}</p>
+                                <p>E-mail: <u>${users[i].email}</u></p>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn-small light-blue lighten-2 editUser" onClick="editUser('${i}')">Editar</button>
+                                <button class="btn-small red darken-2 removeUser" onClick="removeUser('${i}')">Apagar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            `
     }
 }
 function editUser(index) {
@@ -33,31 +44,51 @@ function editUser(index) {
     for (i = 0; i < users.length; i++) {
         if (i == index) {
             userList.innerHTML +=
-                `<li class="user">
-                    <p>Nome: <input type="text" id="updateName"></p>
-                    <p>E-mail: <input type="email" id="updateEmail"></p>
-                    <button class="" onClick="updateUser('${i}')">Atualizar</button>
-                    <button class="" onClick="readUser()">Cancelar</button>
-                </li>`
+        `<li class="user">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <p>Nome: <input class="input-field" type="text" id="updateName"></p>
+                            <p>E-mail: <input class="input-field" type="email" id="updateEmail"></p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn light-blue lighten-2 " onClick="updateUser('${i}')">Atualizar</button>
+                            <button class="btn red darken-2" onClick="readUser()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        `
         } else {
             userList.innerHTML +=
-                `<li class="user">
-                    <p>Nome: ${users[i].name}</p>
-                    <p>E-mail: ${users[i].email}</p>
-                </li>
-        <button class="editUser" onClick="editUser('${i}')" disabled>Editar</button>
-        <button class="removeUser" onClick="removeUser('${i}')" disabled>Apagar</button>`
-
-
+            `<li class="user">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <p>Nome: ${users[i].name}</p>
+                                <p>E-mail: <u>${users[i].email}</u></p>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn-small light-blue lighten-2 editUser" onClick="editUser('${i}')" disabled>Editar</button>
+                                <button class="btn-small red darken-2 removeUser" onClick="removeUser('${i}')" disabled>Apagar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            `
         }
     }
 }
 function updateUser(index) {
     var updateName = document.getElementById('updateName').value
     var updateEmail = document.getElementById('updateEmail').value
-    if (updateName == '' || updateEmail == '') { 
+    if (updateName == '' || updateEmail == '') {
         alert("Atualização incompleta, verifique os campos!")
-    } else { 
+    } else {
         users[index].name = updateName
         users[index].email = updateEmail
         readUser()
