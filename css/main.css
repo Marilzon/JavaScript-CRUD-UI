@@ -1,1 +1,15 @@
 * { padding: 0; margin: 0; }
+body {
+    background: #f2f6f8;
+    background: -moz-linear-gradient(45deg, #f2f6f8 0%, #d8e1e7 0%, #dde5e9 9%, #fff 21%, #fff 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #f2f6f8), color-stop(0%, #d8e1e7), color-stop(9%, #b5c6d0), color-stop(21%, #fff), color-stop(100%, #fff));
+    background: -webkit-linear-gradient(45deg, #f2f6f8 0%, #d8e1e7 0%, #b5c6d0 9%, #fff 21%, #fff 100%);
+    background: -o-linear-gradient(45deg, #f2f6f8 0%, #d8e1e7 0%, #b5c6d0 9%, #fff 21%, #fff 100%);
+    background: -ms-linear-gradient(45deg, #f2f6f8 0%, #d8e1e7 0%, #b5c6d0 9%, #fff 21%, #fff 100%);
+    background: linear-gradient(45deg, #f2f6f8 0%, #d8e1e7 0%, #b5c6d0 9%, #fff 21%, #fff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#fff', GradientType=1 );
+}
+.register-form {
+    width: 100vw;
+    height: 100vh;
+}
