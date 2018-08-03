@@ -5,8 +5,6 @@ Projeto que demonstra um CRUD feito somente em JavaScript, com uma interface de 
 ## Autor
 * **Marilzon de Sousa** - (https://github.com/Marilzon/)
 
-```
-
 ## Funções
 - [X] Cadastrar (Nome/Email)
 - [X] Visualizar lista de cadastrados
@@ -19,8 +17,5 @@ Projeto que demonstra um CRUD feito somente em JavaScript, com uma interface de 
 - [] Integração de dados com JSON
 - [] validação de E-MAIL real.
 
-```
-
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
