@@ -1,13 +1,23 @@
 # JavaScript-CRUD-UI
 
-Projeto que demontra um CRUD feito somente em JavaScript, com uma interface de usuario agradavel.
+Projeto que demonstra um CRUD feito somente em JavaScript, com uma interface de usuario agradavel.
 
 ## Autor
 * **Marilzon de Sousa** - (https://github.com/Marilzon/)
 
 ```
 
-## Como usar:
+## Funções
+- [X] Cadastrar (Nome/Email)
+- [X] Visualizar lista de cadastrados
+- [X] Atualizar (Nome/Email)
+- [X] Remover
+
+## Atualizaçoes pendentes
+- [] Interface de Usuario
+- [] Validação com CPF
+- [] Integração de dados com JSON
+- [] validação de E-MAIL real.
 
 ```
 
