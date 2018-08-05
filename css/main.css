@@ -1,14 +1,12 @@
-* { padding: 0; margin: 0; }
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* { padding: 0; margin: 0; font-family: 'Montserrat', sans-serif; color: #fff !important;}
 body {
     background-color: #6488d4;
-    color: white;
 }
-
-.register-form {
-    width: 100vw;
-    height: 100vh;
-}
-
 .input-field input[type=text], .input-field input[type=email]  {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff !important;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgba(255, 255, 255, 0) !important;
+    background-image: none !important;
 }
