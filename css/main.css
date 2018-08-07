@@ -3,10 +3,13 @@
 body {
     background-color: #6488d4;
 }
-.input-field input[type=text], .input-field input[type=email]  {
-    border-bottom: 1px solid #fff !important;
+.input-field input[type=text], .input-field input[type=email] {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+  }
+/*Tratamento de erros*/
+.no-drop:hover {
+    cursor: no-drop;
 }
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: rgba(255, 255, 255, 0) !important;
-    background-image: none !important;
-}
+
+

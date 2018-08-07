@@ -7,6 +7,7 @@ document.getElementById('signUp').addEventListener('submit', (e) => {
     createUser(name, email)
     e.preventDefault()
 })
+
 function createUser(name, email) {
     var user = {
         name: name,
@@ -44,7 +45,7 @@ function editUser(index) {
     for (i = 0; i < users.length; i++) {
         if (i == index) {
             userList.innerHTML +=
-        `
+                `
         <li class="user ">
             <div class="row">
                 <div class="col s12">
@@ -72,7 +73,7 @@ function editUser(index) {
         `
         } else {
             userList.innerHTML +=
-            `
+                `
             <li class="user">
                 <div class="row">
                     <div class="col s12">
@@ -108,3 +109,4 @@ function removeUser(i) {
     users.splice(i, 1)
     readUser()
 }
+
