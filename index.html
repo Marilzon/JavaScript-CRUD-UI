@@ -17,19 +17,26 @@
     <section class="register-form">
         <div class="container">
             <div class="row">
-                <form class="col s12 center-align" id="signUp" name="formUser">
+                <form class="col s12 center-align" id="signUp" name="signUp">
                     <h3>JavaScript CRUD UI</h3>
+                    <p>JavaScript CRUD open-source</p>
+                    <hr class="my-03">    
                     <div class="row">
                         <div class="input-field col s12 m6">
                             <label for="name">Nome:</label>
-                            <input class="validate" type="text" id="name" required>
+                            <input type="text" id="name" onblur="validateName(signUp.name)" required>
+                            <span class="helper-text right red" id="nameHelper">
+                                Minimo: 2 Caractéres! *
+                            </span>
                         </div>
-                        <p id="demo"></p>
-
                         <div class="input-field col s12 m6">
                             <label for="email">E-mail:</label>
-                            <input class="validate" type="email" id="email" required>
+                            <input type="email" id="email" onblur="validateEmail(signUp.email)" required>
+                            <span class="helper-text right red" id="emailHelper">
+                                E-Mail Obrigatorio! *
+                            </span>
                         </div>
+                        <br>
                         <button class="btn-large waves-effect light-blue lighten-2" type="submit" name="submit">
                             Cadastrar
                             <i class="material-icons right">add_circle</i>
@@ -43,7 +50,7 @@
         </div>
     </section>
     <script src="js/materialize.min.js"></script>
-    <script src="js/user-list.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

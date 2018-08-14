@@ -1,13 +1,13 @@
 var users = []
 var userList = document.getElementById('users')
 
-document.getElementById('signUp').addEventListener('submit', (e) => {
+document.getElementById('signUp').addEventListener('submit', signUser)
+function signUser(e) {
+    e.preventDefault()
     let name = document.getElementById("name").value
     let email = document.getElementById("email").value
     createUser(name, email)
-    e.preventDefault()
-})
-
+}
 function createUser(name, email) {
     var user = {
         name: name,
@@ -95,8 +95,8 @@ function editUser(index) {
     }
 }
 function updateUser(index) {
-    var updateName = document.getElementById('updateName').value
-    var updateEmail = document.getElementById('updateEmail').value
+    var updateName = document.getElementById("updateName").value
+    var updateEmail = document.getElementById("updateEmail").value
     if (updateName == '' || updateEmail == '') {
         alert("Atualização incompleta, verifique os campos!")
     } else {
@@ -109,4 +109,48 @@ function removeUser(i) {
     users.splice(i, 1)
     readUser()
 }
-
+function validateName(field) {
+    let name = document.getElementById("name").value
+    let nameHelper = document.getElementById("nameHelper")
+    if (name.length > 2) {
+        nameHelper.classList.remove("red")
+        nameHelper.classList.add("green")
+        nameHelper.innerHTML = ""
+        nameHelper.innerHTML = `<span>Nome Valido!</span>`
+        return true
+    } else {
+        nameHelper.classList.remove("green")
+        nameHelper.classList.add("red")
+        nameHelper.innerHTML = ""
+        nameHelper.innerHTML = `<span>Nome Invalido! *</span>`
+        return false
+    }
+}
+function validateEmail(field) {
+    let indexEmail = field.value.substring(0, field.value.indexOf("@"))
+    let domain = field.value.substring(field.value.indexOf("@") + 1, field.value.length)
+    let emailHelper = document.getElementById("emailHelper")
+    if (
+        (indexEmail.length >= 1) &&
+        (domain.length >= 3) &&
+        (indexEmail.search("@") == -1) &&
+        (domain.search("@") == -1) &&
+        (indexEmail.search(" ") == -1) &&
+        (domain.search(" ") == -1) &&
+        (domain.search(".") != -1) &&
+        (domain.indexOf(".") >= 1) &&
+        (domain.lastIndexOf(".") < domain.length - 1)
+    ) {
+        emailHelper.classList.remove("red")
+        emailHelper.classList.add("green")
+        emailHelper.innerHTML = ""
+        emailHelper.innerHTML = `<span>E-mail valido!</span>`
+        return true
+    } else {
+        emailHelper.classList.remove("green")
+        emailHelper.classList.add("red")
+        emailHelper.innerHTML = ""
+        emailHelper.innerHTML = `<span>Email Incorreto! *</span>`
+        return false
+    }
+}

@@ -20,9 +20,8 @@ Projeto que demonstra um CRUD feito somente em JavaScript, com uma interface de 
 ## Atualizações pendentes
 - [ ] Rejeitar cadastros duplidacos 
 - [ ] Upload de imagem 
-- [ ] Interface de usuario
-- [ ] Validação com CPF
-- [ ] Validação real de E-MAIL.
+- [ ] Validação de CPF
+- [ ] Validação de E-MAIL.
 - [ ] Comunicação de dados com JSON
 - [ ] Testes TDD.
 

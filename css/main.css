@@ -3,6 +3,14 @@
 body {
     background-color: #6488d4;
 }
+.my-03 {
+  margin-bottom: 10%;
+}
+.helper-text {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 3px;
+}
 .input-field input[type=text], .input-field input[type=email] {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
@@ -11,5 +19,5 @@ body {
 .no-drop:hover {
     cursor: no-drop;
 }
-
+/*Animacoes*/
 
