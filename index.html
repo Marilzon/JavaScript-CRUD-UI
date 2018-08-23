@@ -24,14 +24,14 @@
                     <div class="row">
                         <div class="input-field col s12 m6">
                             <label for="name">Nome:</label>
-                            <input type="text" id="name" onblur="validateName(signUp.name)" required>
+                            <input type="text" id="name" name="name" onblur="validateName(signUp.name)">
                             <span class="helper-text right red" id="nameHelper">
                                 Minimo: 2 Caractéres! *
                             </span>
                         </div>
                         <div class="input-field col s12 m6">
                             <label for="email">E-mail:</label>
-                            <input type="email" id="email" onblur="validateEmail(signUp.email)" required>
+                            <input type="email" id="email" onblur="validateEmail(signUp.email)">
                             <span class="helper-text right red" id="emailHelper">
                                 E-Mail Obrigatorio! *
                             </span>
@@ -41,6 +41,7 @@
                             Cadastrar
                             <i class="material-icons right">add_circle</i>
                         </button>
+                        <button type="button" class="btn" id="check">checkValidity()</button>
                     </div>
                 </form>
             </div>

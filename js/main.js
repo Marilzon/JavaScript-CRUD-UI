@@ -1,13 +1,19 @@
 var users = []
-var userList = document.getElementById('users')
+var userList = document.getElementById("users")
+var form = document.getElementById("signUp")
+var checkButton = document.getElementById("check")
 
 document.getElementById('signUp').addEventListener('submit', signUser)
 function signUser(e) {
-    e.preventDefault()
     let name = document.getElementById("name").value
     let email = document.getElementById("email").value
     createUser(name, email)
+    e.preventDefault()
 }
+checkButton.addEventListener("click", function () {
+    var checkVal = form.checkValidity()
+    console.log(checkVal)
+})
 function createUser(name, email) {
     var user = {
         name: name,
@@ -144,13 +150,22 @@ function validateEmail(field) {
         emailHelper.classList.remove("red")
         emailHelper.classList.add("green")
         emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `<span>E-mail valido!</span>`
+        emailHelper.innerHTML = `<span>E-mail Valido!</span>`
         return true
     } else {
         emailHelper.classList.remove("green")
         emailHelper.classList.add("red")
         emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `<span>Email Incorreto! *</span>`
+        emailHelper.innerHTML = `<span>Email Invalido! *</span>`
         return false
+    }
+}
+function submitUser() {
+    if ((validateName(field)) &&
+        (validateEmail(field))
+    ) {
+        document.getElementById('signUp').addEventListener('submit', signUser)
+    } else {
+        console.log("Erro no formulario!")
     }
 }
