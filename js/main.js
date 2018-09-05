@@ -5,6 +5,7 @@ var inputName = document.getElementById('name')
 var inputEmail = document.getElementById('email')
 var isName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
 var isEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+var userList = document.querySelector(".users-list")
 
 inputName.addEventListener("blur", validateName)
 inputEmail.addEventListener("blur", validateEmail)
@@ -15,47 +16,47 @@ form.addEventListener("submit", signUp)
 function validateName(e) {
     e.preventDefault()
     if (inputName.value.length < 2 || inputName.value.length > 24) {
-        nameHelper.classList.remove("green", "black-text")
+        nameHelper.classList.remove("green")
         nameHelper.classList.add("red", "lighten-1")
         nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `Obrigatório: 2 a 24 Caractéres! *`
+        nameHelper.innerHTML = `Obrigatório: 2 a 24 Caractéres!`
     }
     else if (
         inputName.value.match(isName)
     ) {
-        nameHelper.classList.remove("red", "black-text")
+        nameHelper.classList.remove("red")
         nameHelper.classList.add("green")
         nameHelper.innerHTML = ""
         nameHelper.innerHTML = `Nome valido!`
     }
     else {
-        nameHelper.classList.remove("green", "black-text")
+        nameHelper.classList.remove("green")
         nameHelper.classList.add("red", "lighten-1")
         nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `Nome invalido! *`
+        nameHelper.innerHTML = `Nome invalido!`
     }
 }
 function validateEmail(e) {
     e.preventDefault()
     if (inputEmail.value === '') {
-        emailHelper.classList.remove("green", "black-text")
+        emailHelper.classList.remove("green")
         emailHelper.classList.add("red", "lighten-1")
         emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `Digite o E-mail! *`
+        emailHelper.innerHTML = `Digite o E-mail!`
     }
     else if (
         inputEmail.value.match(isEmail)
     ) {
-        emailHelper.classList.remove("red", "black-text")
+        emailHelper.classList.remove("red", )
         emailHelper.classList.add("green")
         emailHelper.innerHTML = ""
         emailHelper.innerHTML = `E-mail valido!`
     }
     else {
-        emailHelper.classList.remove("green", "black-text")
+        emailHelper.classList.remove("green", )
         emailHelper.classList.add("red", "lighten-1")
         emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `E-mail invalido! *`
+        emailHelper.innerHTML = `E-mail invalido!`
     }
 }
 function signUp() {
@@ -72,6 +73,7 @@ function createUser(name, email) {
     }
     users.push(user)
     readUser()
+    countUsers()
     form.reset()
 }
 function readUser() {
@@ -84,6 +86,7 @@ function readUser() {
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content ">
+                                <p>Identificação de usuario: ${i+1}</p>
                                 <p>Nome: ${users[i].name}</p>
                                 <p>E-mail: <u>${users[i].email}</u></p>
                             </div>
@@ -117,8 +120,10 @@ function editUser(index) {
                                 <div class="input-field col s12 m6">
                                     <label for="updateEmail">E-mail:</label>
                                     <input type="email" id="updateEmail">
-                                    <span class="helper-text black-text left" id="updateHelper">
-                                        Campos Obrigatórios *
+                                </div>
+                                <div class="helper-container">
+                                    <span class="helper-text" id="updateHelper">
+                                        Campos Obrigatórios
                                     </span>
                                 </div>
                                 </div>
@@ -168,13 +173,18 @@ function updateUser(index) {
         users[index].email = updateEmail
         readUser()
     } else {
-        updateHelper.classList.remove("black-text")
+        updateHelper.classList.remove()
         updateHelper.classList.add("red")
         updateHelper.innerHTML = ""
-        updateHelper.innerHTML = `Nome ou E-mail incorreto!, Verifique para atualizar! *`
+        updateHelper.innerHTML = `Nome ou E-mail incorreto!, Verifique para atualizar!`
     }
 }
 function removeUser(i) {
     users.splice(i, 1)
+    countUsers()
     readUser()
+}
+function countUsers() {
+    userCount.innerHTML = ""
+    userCount.innerHTML = `Usuarios Cadastrados: ${users.length}`
 }

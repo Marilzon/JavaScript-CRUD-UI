@@ -2,23 +2,18 @@
 body {
     background-color: #6488d4;
 }
-.my-03 {
-    margin-bottom: 10%;
-}
 .card .card-content {
     padding-bottom: 0;
     border-radius: 0 0 2px 2px;
-}
-.helper-text {
-    background-color: #fff;
-    border-radius: 3px;
-    padding: 3px;
 }
 .input-field input[type=text], .input-field input[type=email] {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
 }
-.footer {
+.helper-container {
+    text-align: center;
+}
+.main-footer {
     background-color: #6488d4;
     width: 100%;
     text-align: center;
@@ -28,5 +23,17 @@ body {
     border-top: 0.5px solid #fff;
 }
 /*Tratamento de erros*/
-
-/*Animacoes*/
+.helper-text {
+    border: 0.5px solid #fff;
+    color: #fff;
+    border-radius: 3px;
+    padding: 3px;
+}
+@media (max-width: 425px) {
+    .card .card-action:last-child {
+        text-align: center;
+    }
+    .right {
+        float: none!important;
+    }
+}

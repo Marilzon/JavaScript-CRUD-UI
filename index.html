@@ -8,7 +8,6 @@
 
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <title>JavaScript CRUD UI</title>
 </head>
@@ -20,20 +19,21 @@
                 <form class="col s12 center-align" id="signUp" novalidate>
                     <h3>JavaScript CRUD UI</h3>
                     <p>JavaScript CRUD open-source</p>
-                    <hr class="my-03">    
+                    <hr class="my-03">
+                    <span id="userCount"></span>
                     <div class="row">
                         <div class="input-field col s12 m6">
                             <label for="name">Nome:</label>
                             <input type="text" id="name">
-                            <span class="helper-text black-text right" id="nameHelper">
-                                Campo Obrigatório *
+                            <span class="helper-text right" id="nameHelper">
+                                Campo Obrigatório!
                             </span>
                         </div>
                         <div class="input-field col s12 m6">
                             <label for="email">E-mail:</label>
                             <input class="my-03 " type="email" id="email">
-                            <span class="helper-text black-text right" id="emailHelper">
-                                Campo Obrigatorio! *
+                            <span class="helper-text right" id="emailHelper">
+                                Campo Obrigatorio!
                             </span>
                         </div>
                         <br>
@@ -44,14 +44,13 @@
                     </div>
                 </form>
             </div>
-
             <ul class="users-list" id="users">
             </ul>
         </div>
     </section>
-    <footer class="footer">
-       <p>Marilzon de Sousa - 2018</p>  
-       <p><a href="#" target="_blank">JavaScript CRUD UI Code</a></p>  
+    <footer class="main-footer">
+        <p>Marilzon de Sousa - 2018</p>
+        <p><a href="#" target="_blank"><u>JavaScript CRUD UI Code</u></a></p>
     </footer>
     <script src="js/materialize.min.js"></script>
     <script src="js/main.js"></script>
