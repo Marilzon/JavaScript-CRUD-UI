@@ -69,7 +69,6 @@ function validateEmail(e) {
         } else {
             console.log("Valores incorretos!")
         }
-
     }
 function createUser(name, email) {
     var user = {
@@ -118,6 +117,9 @@ function editUser(index) {
                             <div class="input-field col s12 m6">
                                 <label for="updateName">Nome:</label>
                                 <input  type="text" id="updateName">
+                                <span class="helper-text black-text left" id="updateHelper">
+                                    Campos Obrigatórios *
+                                </span>
                             </div>
                             <div class="input-field col s12 m6">
                                 <label for="updateEmail">E-mail:</label>
@@ -158,14 +160,20 @@ function editUser(index) {
     }
 }
 function updateUser(index) {
-    var updateName = document.getElementById("updateName").value
-    var updateEmail = document.getElementById("updateEmail").value
-    if (updateName == '' || updateEmail == '') {
-        alert("Atualização incompleta, verifique os campos!")
-    } else {
+    let updateName = document.getElementById("updateName").value
+    let updateEmail = document.getElementById("updateEmail").value
+    if (
+        (updateName.match(isName)) &&
+        (updateEmail.match(isEmail))
+    ) {
         users[index].name = updateName
         users[index].email = updateEmail
         readUser()
+    } else {
+        updateHelper.classList.remove("black-text")
+        updateHelper.classList.add("red")
+        updateHelper.innerHTML = ""
+        updateHelper.innerHTML = `O campo Nome ou E-mail esta incorreto!, Verifique para atualizar! *`
     }
 }
 function removeUser(i) {

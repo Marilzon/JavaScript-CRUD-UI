@@ -5,6 +5,10 @@ body {
 .my-03 {
   margin-bottom: 10%;
 }
+.card .card-content {
+    padding: 24px 24px 0 24px;
+    border-radius: 0 0 2px 2px;
+}
 .helper-text {
     background-color: #fff;
     border-radius: 3px;
@@ -19,4 +23,3 @@ body {
     cursor: no-drop;
 }
 /*Animacoes*/
-
