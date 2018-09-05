@@ -14,11 +14,11 @@ form.addEventListener("submit", signUp)
 
 function validateName(e) {
     e.preventDefault()
-    if (inputName.value === '') {
+    if (inputName.value.length < 2 || inputName.value.length > 24) {
         nameHelper.classList.remove("green", "black-text")
         nameHelper.classList.add("red", "lighten-1")
         nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `Digite seu nome *`
+        nameHelper.innerHTML = `Obrigatório: 2 a 24 Caractéres! *`
     }
     else if (
         inputName.value.match(isName)
@@ -26,7 +26,7 @@ function validateName(e) {
         nameHelper.classList.remove("red", "black-text")
         nameHelper.classList.add("green")
         nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `Nome valido! *`
+        nameHelper.innerHTML = `Nome valido!`
     }
     else {
         nameHelper.classList.remove("green", "black-text")
@@ -49,7 +49,7 @@ function validateEmail(e) {
         emailHelper.classList.remove("red", "black-text")
         emailHelper.classList.add("green")
         emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `E-mail valido! *`
+        emailHelper.innerHTML = `E-mail valido!`
     }
     else {
         emailHelper.classList.remove("green", "black-text")
@@ -58,18 +58,13 @@ function validateEmail(e) {
         emailHelper.innerHTML = `E-mail invalido! *`
     }
 }
-    function signUp() {
-        if (
-            (inputName.value.match(isName)) &&
-            (inputEmail.value.match(isEmail))
-        ) {
-            let name = inputName.value
-            let email = inputEmail.value
-            createUser(name, email)
-        } else {
-            console.log("Valores incorretos!")
-        }
+function signUp() {
+    if (inputName.value.match(isName) && inputEmail.value.match(isEmail)) {
+        let name = inputName.value
+        let email = inputEmail.value
+        createUser(name, email)
     }
+}
 function createUser(name, email) {
     var user = {
         name: name,
@@ -83,7 +78,8 @@ function readUser() {
     userList.innerHTML = ''
     for (i = 0; i < users.length; i++) {
         userList.innerHTML +=
-            `<li class="user">
+            `
+            <li class="user">
                 <div class="row">
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
@@ -92,8 +88,8 @@ function readUser() {
                                 <p>E-mail: <u>${users[i].email}</u></p>
                             </div>
                             <div class="card-action">
-                                <button class="btn-small light-blue lighten-2 editUser" onClick="editUser('${i}')">Editar</button>
-                                <button class="btn-small red darken-2 removeUser" onClick="removeUser('${i}')">Apagar</button>
+                                <button class="btn-small light-blue lighten-2" id="editUser" onclick="editUser('${i}')">Editar</button>
+                                <button class="btn-small red darken-2" onclick="removeUser('${i}')">Apagar</button>
                             </div>
                         </div>
                     </div>
@@ -107,38 +103,38 @@ function editUser(index) {
     for (i = 0; i < users.length; i++) {
         if (i == index) {
             userList.innerHTML +=
-                `
-        <li class="user ">
-            <div class="row">
-                <div class="col s12">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content">
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <label for="updateName">Nome:</label>
-                                <input  type="text" id="updateName">
-                                <span class="helper-text black-text left" id="updateHelper">
-                                    Campos Obrigatórios *
-                                </span>
+            `
+            <li class="user ">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s12 m6">
+                                    <label for="updateName">Nome:</label>
+                                    <input  type="text" id="updateName">
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <label for="updateEmail">E-mail:</label>
+                                    <input type="email" id="updateEmail">
+                                    <span class="helper-text black-text left" id="updateHelper">
+                                        Campos Obrigatórios *
+                                    </span>
+                                </div>
+                                </div>
                             </div>
-                            <div class="input-field col s12 m6">
-                                <label for="updateEmail">E-mail:</label>
-                                <input type="email" id="updateEmail">
+                            <div class="card-action">
+                                <button class="btn light-blue lighten-2 " onClick="updateUser('${i}')">Atualizar</button>
+                                <button class="btn red darken-2" onClick="readUser()">Cancelar</button>
                             </div>
-                            </div>
-                        </div>
-                        <div class="card-action">
-                            <button class="btn light-blue lighten-2 " onClick="updateUser('${i}')">Atualizar</button>
-                            <button class="btn red darken-2" onClick="readUser()">Cancelar</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        `
+            </li>
+            `
         } else {
             userList.innerHTML +=
-                `
+            `
             <li class="user">
                 <div class="row">
                     <div class="col s12">
@@ -163,8 +159,10 @@ function updateUser(index) {
     let updateName = document.getElementById("updateName").value
     let updateEmail = document.getElementById("updateEmail").value
     if (
-        (updateName.match(isName)) &&
-        (updateEmail.match(isEmail))
+        updateName.match(isName) &&
+        updateName.length > 1 &&
+        updateName.length < 25 &&
+        updateEmail.match(isEmail)
     ) {
         users[index].name = updateName
         users[index].email = updateEmail
@@ -173,7 +171,7 @@ function updateUser(index) {
         updateHelper.classList.remove("black-text")
         updateHelper.classList.add("red")
         updateHelper.innerHTML = ""
-        updateHelper.innerHTML = `O campo Nome ou E-mail esta incorreto!, Verifique para atualizar! *`
+        updateHelper.innerHTML = `Nome ou E-mail incorreto!, Verifique para atualizar! *`
     }
 }
 function removeUser(i) {

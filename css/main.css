@@ -3,10 +3,10 @@ body {
     background-color: #6488d4;
 }
 .my-03 {
-  margin-bottom: 10%;
+    margin-bottom: 10%;
 }
 .card .card-content {
-    padding: 24px 24px 0 24px;
+    padding-bottom: 0;
     border-radius: 0 0 2px 2px;
 }
 .helper-text {
@@ -17,9 +17,16 @@ body {
 .input-field input[type=text], .input-field input[type=email] {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
-  }
-/*Tratamento de erros*/
-.no-drop:hover {
-    cursor: no-drop;
 }
+.footer {
+    background-color: #6488d4;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    border-top: 0.5px solid #fff;
+}
+/*Tratamento de erros*/
+
 /*Animacoes*/
