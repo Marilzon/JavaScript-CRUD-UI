@@ -1,19 +1,76 @@
 var users = []
 var userList = document.getElementById("users")
 var form = document.getElementById("signUp")
-var checkButton = document.getElementById("check")
+var inputName = document.getElementById('name')
+var inputEmail = document.getElementById('email')
+var isName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+var isEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-document.getElementById('signUp').addEventListener('submit', signUser)
-function signUser(e) {
-    let name = document.getElementById("name").value
-    let email = document.getElementById("email").value
-    createUser(name, email)
+inputName.addEventListener("blur", validateName)
+inputEmail.addEventListener("blur", validateEmail)
+form.addEventListener("submit", validateName)
+form.addEventListener("submit", validateEmail)
+form.addEventListener("submit", signUp)
+
+function validateName(e) {
     e.preventDefault()
+    if (inputName.value === '') {
+        nameHelper.classList.remove("green", "black-text")
+        nameHelper.classList.add("red", "lighten-1")
+        nameHelper.innerHTML = ""
+        nameHelper.innerHTML = `Digite seu nome *`
+    }
+    else if (
+        inputName.value.match(isName)
+    ) {
+        nameHelper.classList.remove("red", "black-text")
+        nameHelper.classList.add("green")
+        nameHelper.innerHTML = ""
+        nameHelper.innerHTML = `Nome valido! *`
+    }
+    else {
+        nameHelper.classList.remove("green", "black-text")
+        nameHelper.classList.add("red", "lighten-1")
+        nameHelper.innerHTML = ""
+        nameHelper.innerHTML = `Nome invalido! *`
+    }
 }
-checkButton.addEventListener("click", function () {
-    var checkVal = form.checkValidity()
-    console.log(checkVal)
-})
+function validateEmail(e) {
+    e.preventDefault()
+    if (inputEmail.value === '') {
+        emailHelper.classList.remove("green", "black-text")
+        emailHelper.classList.add("red", "lighten-1")
+        emailHelper.innerHTML = ""
+        emailHelper.innerHTML = `Digite o E-mail! *`
+    }
+    else if (
+        inputEmail.value.match(isEmail)
+    ) {
+        emailHelper.classList.remove("red", "black-text")
+        emailHelper.classList.add("green")
+        emailHelper.innerHTML = ""
+        emailHelper.innerHTML = `E-mail valido! *`
+    }
+    else {
+        emailHelper.classList.remove("green", "black-text")
+        emailHelper.classList.add("red", "lighten-1")
+        emailHelper.innerHTML = ""
+        emailHelper.innerHTML = `E-mail invalido! *`
+    }
+}
+    function signUp() {
+        if (
+            (inputName.value.match(isName)) &&
+            (inputEmail.value.match(isEmail))
+        ) {
+            let name = inputName.value
+            let email = inputEmail.value
+            createUser(name, email)
+        } else {
+            console.log("Valores incorretos!")
+        }
+
+    }
 function createUser(name, email) {
     var user = {
         name: name,
@@ -21,7 +78,7 @@ function createUser(name, email) {
     }
     users.push(user)
     readUser()
-    document.getElementById('signUp').reset()
+    form.reset()
 }
 function readUser() {
     userList.innerHTML = ''
@@ -115,57 +172,57 @@ function removeUser(i) {
     users.splice(i, 1)
     readUser()
 }
-function validateName(field) {
-    let name = document.getElementById("name").value
-    let nameHelper = document.getElementById("nameHelper")
-    if (name.length > 2) {
-        nameHelper.classList.remove("red")
-        nameHelper.classList.add("green")
-        nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `<span>Nome Valido!</span>`
-        return true
-    } else {
-        nameHelper.classList.remove("green")
-        nameHelper.classList.add("red")
-        nameHelper.innerHTML = ""
-        nameHelper.innerHTML = `<span>Nome Invalido! *</span>`
-        return false
-    }
-}
-function validateEmail(field) {
-    let indexEmail = field.value.substring(0, field.value.indexOf("@"))
-    let domain = field.value.substring(field.value.indexOf("@") + 1, field.value.length)
-    let emailHelper = document.getElementById("emailHelper")
-    if (
-        (indexEmail.length >= 1) &&
-        (domain.length >= 3) &&
-        (indexEmail.search("@") == -1) &&
-        (domain.search("@") == -1) &&
-        (indexEmail.search(" ") == -1) &&
-        (domain.search(" ") == -1) &&
-        (domain.search(".") != -1) &&
-        (domain.indexOf(".") >= 1) &&
-        (domain.lastIndexOf(".") < domain.length - 1)
-    ) {
-        emailHelper.classList.remove("red")
-        emailHelper.classList.add("green")
-        emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `<span>E-mail Valido!</span>`
-        return true
-    } else {
-        emailHelper.classList.remove("green")
-        emailHelper.classList.add("red")
-        emailHelper.innerHTML = ""
-        emailHelper.innerHTML = `<span>Email Invalido! *</span>`
-        return false
-    }
-}
-function submitUser() {
-    if ((validateName(field)) &&
-        (validateEmail(field))
-    ) {
-        document.getElementById('signUp').addEventListener('submit', signUser)
-    } else {
-        console.log("Erro no formulario!")
-    }
-}
+// function validateName(field) {
+//     let name = document.getElementById("name").value
+//     let nameHelper = document.getElementById("nameHelper")
+//     if (name.length > 2) {
+//         nameHelper.classList.remove("red")
+//         nameHelper.classList.add("green")
+//         nameHelper.innerHTML = ""
+//         nameHelper.innerHTML = `<span>Nome Valido!</span>`
+//         return true
+//     } else {
+//         nameHelper.classList.remove("green")
+//         nameHelper.classList.add("red")
+//         nameHelper.innerHTML = ""
+//         nameHelper.innerHTML = `<span>Nome Invalido! *</span>`
+//         return false
+//     }
+// }
+// function validateEmail(field) {
+//     let indexEmail = field.value.substring(0, field.value.indexOf("@"))
+//     let domain = field.value.substring(field.value.indexOf("@") + 1, field.value.length)
+//     let emailHelper = document.getElementById("emailHelper")
+//     if (
+//         (indexEmail.length >= 1) &&
+//         (domain.length >= 3) &&
+//         (indexEmail.search("@") == -1) &&
+//         (domain.search("@") == -1) &&
+//         (indexEmail.search(" ") == -1) &&
+//         (domain.search(" ") == -1) &&
+//         (domain.search(".") != -1) &&
+//         (domain.indexOf(".") >= 1) &&
+//         (domain.lastIndexOf(".") < domain.length - 1)
+//     ) {
+//         emailHelper.classList.remove("red")
+//         emailHelper.classList.add("green")
+//         emailHelper.innerHTML = ""
+//         emailHelper.innerHTML = `<span>E-mail Valido!</span>`
+//         return true
+//     } else {
+//         emailHelper.classList.remove("green")
+//         emailHelper.classList.add("red")
+//         emailHelper.innerHTML = ""
+//         emailHelper.innerHTML = `<span>Email Invalido! *</span>`
+//         return false
+//     }
+// }
+// function submitUser() {
+//     if ((validateName(field)) &&
+//         (validateEmail(field))
+//     ) {
+//         document.getElementById('signUp').addEventListener('submit', signUser)
+//     } else {
+//         console.log("Erro no formulario!")
+//     }
+// }
