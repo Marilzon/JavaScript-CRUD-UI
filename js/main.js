@@ -47,13 +47,13 @@ function validateEmail(e) {
     else if (
         inputEmail.value.match(isEmail)
     ) {
-        emailHelper.classList.remove("red", )
+        emailHelper.classList.remove("red")
         emailHelper.classList.add("green")
         emailHelper.innerHTML = ""
         emailHelper.innerHTML = `E-mail valido!`
     }
     else {
-        emailHelper.classList.remove("green", )
+        emailHelper.classList.remove("green")
         emailHelper.classList.add("red", "lighten-1")
         emailHelper.innerHTML = ""
         emailHelper.innerHTML = `E-mail invalido!`
@@ -86,7 +86,7 @@ function readUser() {
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content ">
-                                <span class="helper-span">${i+1}</span>
+                                <span class="helper-span">${i + 1}</span>
                                 <p>Nome: ${users[i].name}</p>
                                 <p>E-mail: <u>${users[i].email}</u></p>
                             </div>
@@ -106,7 +106,7 @@ function editUser(index) {
     for (i = 0; i < users.length; i++) {
         if (i == index) {
             userList.innerHTML +=
-            `
+                `
             <li class="user ">
                 <div class="row">
                     <div class="col s12">
@@ -139,7 +139,7 @@ function editUser(index) {
             `
         } else {
             userList.innerHTML +=
-            `
+                `
             <li class="user">
                 <div class="row">
                     <div class="col s12">
