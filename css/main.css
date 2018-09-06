@@ -13,6 +13,12 @@ body {
 .helper-container {
     text-align: center;
 }
+.helper-span {
+    padding: 3px;
+    border-radius: 3px;
+    background-color: #fff; 
+    color: #000!important; 
+}
 .main-footer {
     background-color: #6488d4;
     width: 100%;

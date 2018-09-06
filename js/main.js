@@ -86,7 +86,7 @@ function readUser() {
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content ">
-                                <p>Identificação de usuario: ${i+1}</p>
+                                <span class="helper-span">${i+1}</span>
                                 <p>Nome: ${users[i].name}</p>
                                 <p>E-mail: <u>${users[i].email}</u></p>
                             </div>
