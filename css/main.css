@@ -1,17 +1,9 @@
 * { padding: 0; margin: 0; color: #fff !important;}
-body {
-    background-color: #6488d4;
-}
+
+body {background-color: #555b63;}
 .card .card-content {
     padding-bottom: 0;
     border-radius: 0 0 2px 2px;
-}
-.input-field input[type=text], .input-field input[type=email] {
-    border-bottom: 1px solid #fff;
-    box-shadow: 0 1px 0 0 #fff;
-}
-.helper-container {
-    text-align: center;
 }
 .helper-span {
     padding: 3px;
@@ -19,8 +11,15 @@ body {
     background-color: #fff; 
     color: #000!important; 
 }
+.green {background-color: #2ecc71!important;}
+.red {background-color: #e74c3c!important;}
+.input-field input[type=text], .input-field input[type=email] {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+}
+.helper-container {text-align: center;}
 .main-footer {
-    background-color: #6488d4;
+    background-color: #485460;
     width: 100%;
     text-align: center;
     position: fixed;
@@ -28,7 +27,6 @@ body {
     z-index: 1000;
     border-top: 0.5px solid #fff;
 }
-/*Tratamento de erros*/
 .helper-text {
     border: 0.5px solid #fff;
     color: #fff;
@@ -36,10 +34,6 @@ body {
     padding: 3px;
 }
 @media (max-width: 425px) {
-    .card .card-action:last-child {
-        text-align: center;
-    }
-    .right {
-        float: none!important;
-    }
+.card .card-action:last-child {text-align: center;}
+.right {float: none!important;}
 }
