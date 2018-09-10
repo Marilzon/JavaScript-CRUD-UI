@@ -35,5 +35,7 @@ body {background-color: #555b63;}
 }
 @media (max-width: 425px) {
 .card .card-action:last-child {text-align: center;}
-.right {float: none!important;}
+.right {
+    float: none!important;
+    text-align: center;}
 }

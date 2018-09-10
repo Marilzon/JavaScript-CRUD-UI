@@ -1,8 +1,6 @@
 var users = []
 var userList = document.querySelector("#users")
 var form = document.querySelector("#signUp")
-var userName = document.querySelector("#userName")
-var userEmail = document.querySelector("#userEmail")
 var nameHelper = document.querySelector("#nameHelper")
 var emailHelper = document.querySelector("#emailHelper")
 var isName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
@@ -15,8 +13,8 @@ form.addEventListener("submit", validateName)
 form.addEventListener("submit", validateEmail)
 form.addEventListener("submit", signUp)
 
-function validateName(e) {
-    e.preventDefault()
+function validateName() {
+    let userName = document.querySelector("#userName")
     if (userName.value.length < 2 || userName.value.length > 24) {
         nameHelper.classList.remove("green")
         nameHelper.classList.add("red", "lighten-1")
@@ -38,8 +36,8 @@ function validateName(e) {
         nameHelper.innerHTML = `Nome invalido!`
     }
 }
-function validateEmail(e) {
-    e.preventDefault()
+function validateEmail() {
+    let userEmail = document.querySelector("#userEmail")
     if (userEmail.value === '') {
         emailHelper.classList.remove("green")
         emailHelper.classList.add("red", "lighten-1")
@@ -61,7 +59,8 @@ function validateEmail(e) {
         emailHelper.innerHTML = `E-mail invalido!`
     }
 }
-function signUp() {
+function signUp(e) {
+    e.preventDefault()
     if (userName.value.match(isName) && userEmail.value.match(isEmail)) {
         let name = userName.value
         let email = userEmail.value
@@ -118,16 +117,10 @@ function editUser(index) {
                                 <div class="input-field col s12 m6">
                                     <label for="updateName">Nome:</label>
                                     <input type="text" id="updateName">
-                                    <span class="helper-text right nameHelper">
-                                        Campo Obrigatório!
-                                    </span>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <label for="updateEmail">E-mail:</label>
                                     <input type="email" id="updateEmail">
-                                    <span class="helper-text right emailHelper">
-                                        Campo Obrigatorio!
-                                    </span>
                                 </div>
                             </div>
                             <div class="card-action">
