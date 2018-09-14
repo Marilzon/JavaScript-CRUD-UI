@@ -12,7 +12,8 @@ body {background-color: #555b63;}
     color: #000!important; 
 }
 .green {background-color: #2ecc71!important;}
-.red {background-color: #e74c3c!important;}
+.red {background-color: #da685b!important;}
+.hidden {opacity: 0; transition: 0.5s}
 .input-field input[type=text], .input-field input[type=email] {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
@@ -33,6 +34,9 @@ body {background-color: #555b63;}
     border-radius: 3px;
     padding: 3px;
 }
+.disabled {
+    cursor: not-allowed;
+  }
 @media (max-width: 425px) {
 .card .card-action:last-child {text-align: center;}
 .right {
