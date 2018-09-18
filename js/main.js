@@ -3,7 +3,7 @@ var userList = document.querySelector("#users")
 var form = document.querySelector("#signUp")
 var nameHelper = document.querySelector("#nameHelper")
 var emailHelper = document.querySelector("#emailHelper")
-var isName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+var isName = /^[a-zA-Z-áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+(([',. -][a-zA-Z-áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])?[a-zA-Z]*)*$/
 var isEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 userName.addEventListener("input", validateName)
@@ -14,57 +14,6 @@ form.addEventListener("submit", validateName)
 form.addEventListener("submit", validateEmail)
 form.addEventListener("submit", signUp)
 
-function isSigned(user) {
-    if (userEmail.value === user.email) { 
-        submit.classList.add("disabled")
-        emailHelper.classList.add("hidden")
-        nameHelper.classList.add("hidden")
-        M.toast({html: 'Este E-Mail Já esta sendo usado!', classes: 'red'})
-     } else {
-        submit.classList.remove("disabled")
-        emailHelper.classList.remove("hidden")
-        nameHelper.classList.remove("hidden")
-     }
-}
-function validateName() {
-    if (userName.value.length < 2 || userName.value.length > 24) {
-        nameHelper.classList.remove("green")
-        nameHelper.classList.add("red")
-        return nameHelper.innerHTML = `Minimo: 2, Maximo: 24 Caractéres`
-    }
-    else if (
-        userName.value.match(isName)
-    ) {
-        nameHelper.classList.remove("red")
-        nameHelper.classList.add("green")
-        return nameHelper.innerHTML = `Nome valido!`
-    }
-    else {
-        nameHelper.classList.remove("green")
-        nameHelper.classList.add("red")
-        return nameHelper.innerHTML = `Nome invalido!`
-    }
-}
-function validateEmail() {
-    if (userEmail.value === '') {
-        emailHelper.classList.remove("green")
-        emailHelper.classList.add("red")
-        return emailHelper.innerHTML = `Campo obrigatório!`
-    }
-    else if (
-        userEmail.value.match(isEmail)
-    ) {
-        users.find(isSigned)
-        emailHelper.classList.remove("red")
-        emailHelper.classList.add("green")
-        return emailHelper.innerHTML = `E-Mail valido!`
-    }
-    else {
-        emailHelper.classList.remove("green")
-        emailHelper.classList.add("red")
-        return emailHelper.innerHTML = `E-Mail invalido!`
-    }
-}
 function signUp(e) {
     e.preventDefault()
     if (userName.value.match(isName) &&
@@ -79,7 +28,7 @@ function createUser(name, email) {
         name: name,
         email: email,
     }
-    M.toast({html: 'Usuario cadastrado!', classes: 'green'})
+    M.toast({ html: 'Usuario cadastrado!', classes: 'green' })
     users.push(user)
     readUser()
     countUsers()
@@ -132,7 +81,7 @@ function editUser(index) {
                         </div>
                     </div>
                     <div class="card-action">
-                        <button class="btn light-blue" id="updateButton" onClick="updateUser('${i}')">Atualizar</button>
+                        <button class="btn light-blue" id="submitUpdate" onClick="updateUser('${i}')">Atualizar</button>
                         <button class="btn red darken-2" onClick="readUser()">Cancelar</button>
                     </div>
                 </div>
@@ -157,11 +106,70 @@ function editUser(index) {
         }
     }
 }
+function validateName() {
+    if (userName.value.length < 2 || userName.value.length > 30) {
+        nameHelper.classList.remove("green")
+        nameHelper.classList.add("red")
+        return nameHelper.innerHTML = `Minimo: 2, Maximo: 30 Caractéres`
+    }
+    else if (
+        userName.value.match(isName)
+    ) {
+        nameHelper.classList.remove("red")
+        nameHelper.classList.add("green")
+        return nameHelper.innerHTML = `Nome valido!`
+    }
+    else {
+        nameHelper.classList.remove("green")
+        nameHelper.classList.add("red")
+        return nameHelper.innerHTML = `Nome invalido!`
+    }
+}
+function validateEmail() {
+    if (userEmail.value === '') {
+        emailHelper.classList.remove("green")
+        emailHelper.classList.add("red")
+        return emailHelper.innerHTML = `Campo obrigatório!`
+    }
+    else if (
+        userEmail.value.match(isEmail)
+    ) {
+        users.find(isSigned)
+        emailHelper.classList.remove("red")
+        emailHelper.classList.add("green")
+        return emailHelper.innerHTML = `E-Mail valido!`
+    }
+    else {
+        emailHelper.classList.remove("green")
+        emailHelper.classList.add("red")
+        return emailHelper.innerHTML = `E-Mail invalido!`
+    }
+}
+function isSigned(user) {
+    if (userEmail.value === user.email) {
+        submit.classList.add("disabled")
+        emailHelper.classList.add("hidden", 3000)
+        M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
+    } else {
+        submit.classList.remove("disabled")
+        emailHelper.classList.remove("hidden")
+    }
+}
+function hasSigned(user) {
+    if (updateEmail.value === user.email) {
+        submitUpdate.classList.add("disabled")
+        upEmailHelper.classList.add("hidden", 3000)
+        M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
+    } else {
+        submitUpdate.classList.remove("disabled")
+        upEmailHelper.classList.remove("hidden")
+    }
+}
 function editName() {
-    if (updateName.value.length < 2 || updateName.value.length > 24) {
+    if (updateName.value.length < 2 || updateName.value.length > 30) {
         upNameHelper.classList.remove("green")
         upNameHelper.classList.add("red")
-        return upNameHelper.innerHTML = `2 á 24 Caractéres`
+        return upNameHelper.innerHTML = `2 á 30 Caractéres`
     }
     else if (
         updateName.value.match(isName)
@@ -185,7 +193,6 @@ function editEmail() {
     else if (
         updateEmail.value.match(isEmail)
     ) {
-        users.find(isSigned)
         upEmailHelper.classList.remove("red")
         upEmailHelper.classList.add("green")
         return upEmailHelper.innerHTML = `E-Mail valido!`
@@ -200,11 +207,15 @@ function updateUser(index) {
     editName()
     editEmail()
     if (updateName.value.match(isName) && updateEmail.value.match(isEmail)) {
-        let name = document.getElementById("updateName").value
-        let email = document.getElementById("updateEmail").value
-        users[index].name = name
-        users[index].email = email
-        readUser()
+        if (users.find(hasSigned)) {
+            M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
+        } else {
+            let name = document.getElementById("updateName").value
+            let email = document.getElementById("updateEmail").value
+            users[index].name = name
+            users[index].email = email
+            readUser()
+        }
     }
 }
 function removeUser(i) {

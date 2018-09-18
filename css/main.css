@@ -13,7 +13,7 @@ body {background-color: #555b63;}
 }
 .green {background-color: #2ecc71!important;}
 .red {background-color: #da685b!important;}
-.hidden {opacity: 0; transition: 0.5s}
+.opacity {opacity: 0;}
 .input-field input[type=text], .input-field input[type=email] {
     border-bottom: 1px solid #fff;
     box-shadow: 0 1px 0 0 #fff;
