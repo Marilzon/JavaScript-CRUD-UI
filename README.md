@@ -18,8 +18,5 @@ Qualquer dica ou Pull sera bem vinda.
 - [X] Atualizar (Nome/Email)
 - [X] Remover cadastro
 
-## Funções pendentes
-- [ ] Rejeitar cadastros duplidacos
-
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

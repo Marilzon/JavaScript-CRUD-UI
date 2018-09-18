@@ -210,6 +210,7 @@ function updateUser(index) {
             users[index].name = name
             users[index].email = email
             readUser()
+            M.toast({ html: 'Dados atualizados!', classes: 'green' })
         } else {
             M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
         }
