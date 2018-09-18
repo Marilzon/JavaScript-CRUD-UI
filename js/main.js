@@ -150,6 +150,7 @@ function isSigned(user) {
         submit.classList.add("disabled")
         emailHelper.classList.add("hidden", 3000)
         M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
+        return userEmail.value === user.email
     } else {
         submit.classList.remove("disabled")
         emailHelper.classList.remove("hidden")
@@ -157,12 +158,7 @@ function isSigned(user) {
 }
 function hasSigned(user) {
     if (updateEmail.value === user.email) {
-        submitUpdate.classList.add("disabled")
-        upEmailHelper.classList.add("hidden", 3000)
-        M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
-    } else {
-        submitUpdate.classList.remove("disabled")
-        upEmailHelper.classList.remove("hidden")
+        return updateEmail.value === user.email
     }
 }
 function editName() {
@@ -193,6 +189,7 @@ function editEmail() {
     else if (
         updateEmail.value.match(isEmail)
     ) {
+        users.find(hasSigned)
         upEmailHelper.classList.remove("red")
         upEmailHelper.classList.add("green")
         return upEmailHelper.innerHTML = `E-Mail valido!`
@@ -207,14 +204,14 @@ function updateUser(index) {
     editName()
     editEmail()
     if (updateName.value.match(isName) && updateEmail.value.match(isEmail)) {
-        if (users.find(hasSigned)) {
-            M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
-        } else {
+        if (users.find(hasSigned) === undefined) {
             let name = document.getElementById("updateName").value
             let email = document.getElementById("updateEmail").value
             users[index].name = name
             users[index].email = email
             readUser()
+        } else {
+            M.toast({ html: 'Este E-Mail Já esta sendo usado!', classes: 'red' })
         }
     }
 }
